@@ -1,5 +1,6 @@
 import math
 
+data = input('data')
 def estimator(data):
 
   currentlyInfected = data['reportedCases'] * 10
@@ -12,7 +13,7 @@ def estimator(data):
     factor = int((data['timeToElapse'] * 7) / 3)
   elif data['periodType'] == "months":
     factor = int((data['timeToElapse'] * 30) / 3)
-    
+
   infectionsByRequestedTime = currentlyInfected * (2**factor)
   impact['infectionsByRequestedTime'] = infectionsByRequestedTime
 
@@ -72,21 +73,21 @@ def availableBedsCalculator():
   availableBeds = data['totalHospitalBeds'] * 0.35
   return availableBeds
 
-data = {
-        "region": {
-            "name": "Africa",
-            "avgAge": 19.7,
-            "avgDailyIncomeInUSD": 5,
-            "avgDailyIncomePopulation": 0.71
-            },
-        "periodType": "days",
-        "timeToElapse": 58,
-        "reportedCases": 674,
-        "population": 66622705,
-        "totalHospitalBeds": 1380614
-      }
+# data = {
+#         "region": {
+#             "name": "Africa",
+#             "avgAge": 19.7,
+#             "avgDailyIncomeInUSD": 5,
+#             "avgDailyIncomePopulation": 0.71
+#             },
+#         "periodType": "days",
+#         "timeToElapse": 58,
+#         "reportedCases": 674,
+#         "population": 66622705,
+#         "totalHospitalBeds": 1380614
+#       }
 
 impact = {}
 severeImpact = {}
 
-# estimator(data)
+estimator(data)
