@@ -5,8 +5,14 @@ def estimator(data):
   currentlyInfected = data['reportedCases'] * 10
   impact['currentlyInfected'] = currentlyInfected
 
-  factor = factorCalculator()
-
+  # factor = factorCalculator()
+  if data['periodType'] == "days":
+    factor = int(data['timeToElapse'] / 3)
+  elif data['periodType'] == "weeks":
+    factor = int((data['timeToElapse'] * 7) / 3)
+  elif data['periodType'] == "months":
+    factor = int((data['timeToElapse'] * 30) / 3)
+    
   infectionsByRequestedTime = currentlyInfected * (2**factor)
   impact['infectionsByRequestedTime'] = infectionsByRequestedTime
 
@@ -51,20 +57,16 @@ def estimator(data):
   dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * data['timeToElapse']
   severeImpact['dollarsInFlight'] = dollarsInFlight
 
-  print(data)
-  print(impact)
-  print(severeImpact)
+  return data
 
-  pass
-
-def factorCalculator():
-  if data['periodType'] == "days":
-    factor = int(data['timeToElapse'] / 3)
-  elif data['periodType'] == "weeks":
-    factor = int((data['timeToElapse'] * 7) / 3)
-  elif data['periodType'] == "months":
-    factor = int((data['timeToElapse'] * 30) / 3)
-  return factor
+# def factorCalculator():
+#   if data['periodType'] == "days":
+#     factor = int(data['timeToElapse'] / 3)
+#   elif data['periodType'] == "weeks":
+#     factor = int((data['timeToElapse'] * 7) / 3)
+#   elif data['periodType'] == "months":
+#     factor = int((data['timeToElapse'] * 30) / 3)
+#   return factor
 
 def availableBedsCalculator():
   availableBeds = data['totalHospitalBeds'] * 0.35
@@ -87,4 +89,4 @@ data = {
 impact = {}
 severeImpact = {}
 
-estimator(data)
+# estimator(data)
