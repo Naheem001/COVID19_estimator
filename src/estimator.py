@@ -1,6 +1,6 @@
 import math
 
-data = input('data')
+data = input('Enter data: ')
 def estimator(data):
   
   impact = {}
@@ -54,7 +54,7 @@ def estimator(data):
   dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * data['timeToElapse']
   severeImpact['dollarsInFlight'] = dollarsInFlight
 
-  data = {"impact": impact, "severeImpact": severeImpact}
+  data = {"data": data, "impact": impact, "severeImpact": severeImpact}
   return data
 
 def factorCalculator():
@@ -70,21 +70,21 @@ def availableBedsCalculator():
   availableBeds = data['totalHospitalBeds'] * 0.35
   return availableBeds
 
-# data = {
-#         "region": {
-#             "name": "Africa",
-#             "avgAge": 19.7,
-#             "avgDailyIncomeInUSD": 5,
-#             "avgDailyIncomePopulation": 0.71
-#             },
-#         "periodType": "days",
-#         "timeToElapse": 58,
-#         "reportedCases": 674,
-#         "population": 66622705,
-#         "totalHospitalBeds": 1380614
-#       }
+data = {
+        "region": {
+            "name": "Africa",
+            "avgAge": 19.7,
+            "avgDailyIncomeInUSD": 5,
+            "avgDailyIncomePopulation": 0.71
+            },
+        "periodType": "days",
+        "timeToElapse": 58,
+        "reportedCases": 674,
+        "population": 66622705,
+        "totalHospitalBeds": 1380614
+      }
 
-# impact = {}
-# severeImpact = {}
+impact = {}
+severeImpact = {}
 
 estimator(data)
