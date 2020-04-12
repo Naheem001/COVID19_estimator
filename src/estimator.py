@@ -1,6 +1,6 @@
 import math
 
-data = input('Enter data: ')
+# data = input('Enter data: ')
 def estimator(data):
   
   impact = {}
@@ -84,7 +84,6 @@ data = {
         "totalHospitalBeds": 1380614
       }
 
-impact = {}
-severeImpact = {}
 
-estimator(data)
+
+# estimator(data)
